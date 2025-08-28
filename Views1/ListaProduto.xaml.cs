@@ -6,10 +6,12 @@ namespace MauiAppMinhasCompras.Views1;
 
 public partial class ListaProduto : ContentPage
 {
-	ObservableCollection<Produto> lista = new ObservableCollection<Produto>();
-
+	ObservableCollection<Produto> lista = new();
+	public ObservableCollection<Produto> Lista;
+#pragma warning disable CS8618 // O campo não anulável precisa conter um valor não nulo ao sair do construtor. Considere adicionar o modificador "obrigatório" ou declarar como anulável.
     public ListaProduto()
-	{
+#pragma warning restore CS8618 // O campo não anulável precisa conter um valor não nulo ao sair do construtor. Considere adicionar o modificador "obrigatório" ou declarar como anulável.
+    {
 		InitializeComponent();
 
 		lst_produtos.ItemsSource = lista;	
@@ -46,7 +48,7 @@ public partial class ListaProduto : ContentPage
 
     private void ToolbarItem_Clicked_1(object sender, EventArgs e)
     {
-		double soma = lista.Sum(i => i.Total);
+		double soma = (double)lista.Sum(i => i.Total);
 
 		string msg = $"O total é {soma:C2}";
 
