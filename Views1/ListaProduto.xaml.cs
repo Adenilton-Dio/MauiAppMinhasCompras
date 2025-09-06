@@ -1,6 +1,7 @@
 
 using MauiAppMinhasCompras.Models;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace MauiAppMinhasCompras.Views1;
 
@@ -112,6 +113,24 @@ public partial class ListaProduto : ContentPage
             DisplayAlert("Ops", ex.Message, "OK");
         }
     }
+
+    private void lst_produtos_ItemSelected_1(object sender, SelectedItemChangedEventArgs e)
+    {
+        try 
+        {
+            Produto p = e.SelectedItem as Produto;
+
+            Navigation.PushAsync(new Views1.EditarProduto
+            {
+                BindingContext = p,
+            });
+
+        }
+        catch (Exception ex)
+        {
+          DisplayAlert("Ops", ex.Message, "OK");
+        }
+    }
 }
 
-    
+
